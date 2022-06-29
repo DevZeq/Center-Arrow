@@ -10,3 +10,4 @@ Cela fait maintenant plus d'un ans qu'il existe, et pour être honnête, c'est p
 
 > ## Téléchargement:
 
+Il suffit de rejoindre mon [discord](https://discord.gg/tck4VkrnWX) afin de télécharger celui-ci.
