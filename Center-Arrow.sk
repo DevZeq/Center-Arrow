@@ -1,0 +1,104 @@
+#===========================
+# Skript fait par ZEQ
+# Date: 19/05/2021
+# Optimisé à 50%
+#===========================
+
+every 3 seconds:
+	loop all players in world "world":
+		set {_location.%loop-player%} to position 0, 0, 0 in world "world"
+		set {_locpl.%loop-player%} to location of loop-player
+		set y coordinate of {_location.%loop-player%} to y coordinate of {_locpl.%loop-player%}
+		set {distance.%loop-player%} to rounded distance between {_location.%loop-player%} and {_locpl.%loop-player%}
+		set action bar of loop-player to "&cCentre&f: &a&b%{direction.%loop-player%}% &7(%{distance.%loop-player%}% block(s))"
+		
+		set {_from.%loop-player%} to location of loop-player
+		set {_to.%loop-player%} to position 0, 0, 0 in world "world"
+		set pitch of {_from.%loop-player%} to 0.001
+		
+		set y coordinate of {_from.%loop-player%} to y coordinate of {_to.%loop-player%}
+		set {_t1.%loop-player%} to distance between {_from.%loop-player%} and {_to.%loop-player%}
+		
+		set {_tr1.%loop-player%} to location 2 meter behind {_from.%loop-player%}
+		set {_tr1.%loop-player%} to distance between {_tr1.%loop-player%} and {_to.%loop-player%}
+		
+		set {_t1.%loop-player%} to {_t1.%loop-player%}-{_tr1.%loop-player%}
+		
+		
+		set {_from.%loop-player%} to location of loop-player
+		set {_to.%loop-player%} to position 0, 0, 0 in world "world"
+		set pitch of {_from.%loop-player%} to 0.001
+		
+		set y coordinate of {_from.%loop-player%} to y coordinate of {_to.%loop-player%}
+		set {_t2.%loop-player%} to distance between {_from.%loop-player%} and {_to.%loop-player%}
+		
+		set {_tr2.%loop-player%} to location 2 meter in front of {_from.%loop-player%}
+		set {_tr2.%loop-player%} to distance between {_tr2.%loop-player%} and {_to.%loop-player%}
+		
+		set {_t2.%loop-player%} to {_t2.%loop-player%}-{_tr2.%loop-player%}
+		
+		
+		set {_from.%loop-player%} to location of loop-player
+		set {_to.%loop-player%} to position 0, 0, 0 in world "world"
+		set pitch of {_from.%loop-player%} to 0.001
+		
+		set y coordinate of {_from.%loop-player%} to y coordinate of {_to.%loop-player%}
+		set {_t3.%loop-player%} to distance between {_from.%loop-player%} and {_to.%loop-player%}
+		
+		set {_tr3.%loop-player%} to location 2 meter right {_from.%loop-player%}
+		set {_tr3.%loop-player%} to distance between {_tr3.%loop-player%} and {_to.%loop-player%}
+		
+		set {_t3.%loop-player%} to {_t3.%loop-player%}-{_tr3.%loop-player%}
+		
+		
+		set {_from.%loop-player%} to location of loop-player
+		set {_to.%loop-player%} to position 0, 0, 0 in world "world"
+		set pitch of {_from.%loop-player%} to 0.001
+		
+		set y coordinate of {_from.%loop-player%} to y coordinate of {_to.%loop-player%}
+		set {_t4.%loop-player%} to distance between {_from.%loop-player%} and {_to.%loop-player%}
+		
+		set {_tr4.%loop-player%} to location 2 meter left {_from.%loop-player%}
+		set {_tr4.%loop-player%} to distance between {_tr4.%loop-player%} and {_to.%loop-player%}
+		
+		set {_t4.%loop-player%} to {_t4.%loop-player%}-{_tr4.%loop-player%}
+		
+		if {_t1.%loop-player%} > 1/3:
+			set {_behind.%loop-player%} to true
+		if {_t2.%loop-player%} > 1/3:
+			set {_infrontof.%loop-player%} to true
+		if {_t3.%loop-player%} > 1/3:
+			set {_right.%loop-player%} to true
+		if {_t4.%loop-player%} > 1/3:
+			set {_left.%loop-player%} to true
+		if {_behind.%loop-player%} is true:
+			if {_right.%loop-player%} is true:
+				set {direction.%loop-player%} to "⬊"
+		if {_behind.%loop-player%} is true:
+			if {_left.%loop-player%} is true:	
+				set {direction.%loop-player%} to "⬋"
+		if {_infrontof.%loop-player%} is true:
+			if {_right.%loop-player%} is true:
+				set {direction.%loop-player%} to "⬈"
+				set {_dirfleche.%loop-player%} to true
+		if {_infrontof.%loop-player%} is true:
+			if {_left.%loop-player%} is true:
+				set {direction.%loop-player%} to "⬉"
+				set {_dirfleche.%loop-player%} to true
+		if {_dirfleche.%loop-player%} is not set:
+			if {_right.%loop-player%} is not set:
+				if {_left.%loop-player%} is not set:
+					if {_infrontof.%loop-player%} is true:
+						set {direction.%loop-player%} to "⬆"
+						
+					if {_behind.%loop-player%} is true:
+						set {direction.%loop-player%} to "⬇"
+			if {_infrontof.%loop-player%} is not set:
+				if {_behind.%loop-player%} is not set:
+					if {_left.%loop-player%} is true:
+						set {direction.%loop-player%} to "⬅"
+						
+					if {_right.%loop-player%} is true:
+						set {direction.%loop-player%} to "➞"
+			else:
+				set {direction.%loop-player%} to "⬆"
