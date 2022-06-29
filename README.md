@@ -1,4 +1,4 @@
-# Center-Arrow
+# Center-Arrow [Skript]
 
 > ## Description:
 
